@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Widget de solo lectura para campos related/computed cuyo origen
+         (participante_id) puede no estar seleccionado todavía. Muestra un
+         placeholder descriptivo mientras el valor esté vacío, en vez del
+         span vacío por defecto de Odoo. Reactivo: cuando el valor llega
+         (participante_id seleccionado), se re-renderiza solo. -->
+
+    <t t-name="formacion_agentes.ReadonlyRelatedPlaceholder">
+        <span t-if="displayValue" t-esc="displayValue" />
+        <span t-else="" class="fi_related_placeholder" t-esc="props.placeholder" />
+    </t>
+
+</templates>

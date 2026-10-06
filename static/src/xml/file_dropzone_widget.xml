@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="formacion_calidad.FileDropzone">
+        <div>
+            <div t-if="!currentFilename"
+                 class="fd_dropzone"
+                 t-on-click="onZoneClick"
+                 t-on-dragover="onDragOver"
+                 t-on-dragleave="onDragLeave"
+                 t-on-drop="onDrop">
+                <i class="fa fa-upload fd_icon"/>
+                <span class="fd_text">
+                    Arrastre archivos aquí o
+                    <span class="fd_link">seleccione archivos</span>
+                </span>
+            </div>
+            <div t-else="" class="fd_file_selected">
+                <i class="fa fa-file-o fd_file_icon"/>
+                <span class="fd_file_name" t-esc="currentFilename"/>
+                <i class="fa fa-times fd_remove" t-on-click="onRemove"/>
+            </div>
+            <input type="file"
+                   t-ref="fileInput"
+                   class="fd_hidden_input"
+                   t-on-change="onFileChange"/>
+        </div>
+    </t>
+</templates>

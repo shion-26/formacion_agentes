@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================
+            VISTA LISTA
+    =========================== -->
+
+    <record id="view_plan_intervencion_list" model="ir.ui.view">
+        <field name="name">plan_intervencion.list</field>
+        <field name="model">plan_intervencion</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="id_plan"/>
+                <field name="participante_id"/>
+                <field name="formador_responsable_id"/>
+                <field name="tipo_intervencion"/>
+                <field name="fecha_inicio"/>
+                <field name="estado_plan"/>
+                <field name="porcentaje_avance"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==========================
+            FORMULARIO
+    =========================== -->
+
+    <record id="view_plan_intervencion_form" model="ir.ui.view">
+        <field name="name">plan_intervencion.form</field>
+        <field name="model">plan_intervencion</field>
+        <field name="arch" type="xml">
+
+            <form string="Planes de Intervención">
+
+                <sheet class="fi_sheet">
+
+                    <!-- CABECERA -->
+
+                    <div class="fi_header">
+
+                        <div class="fi_header_left">
+
+                            <div class="fi_logo">
+                                <i class="fa fa-line-chart fi_logo_icon" title="Planes de Intervención"/>
+                            </div>
+
+                            <div>
+                                <h1>
+                                    PLANES DE INTERVENCIÓN
+                                </h1>
+                                <p>
+                                    Captura de planes de intervención y mejora
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <widget name="fi_action_bar"/>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 1. INFORMACIÓN GENERAL DEL PLAN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            1. INFORMACIÓN GENERAL DEL PLAN
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    ID Plan
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="id_plan"
+                                    nolabel="1"
+                                    placeholder="Ej: PLAN-000123"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de creación
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="fecha_creacion"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Participante / Agente
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="participante_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione participante"/>
+
+                            </div>
+                            
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Campaña
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="campania_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Campaña del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Formador responsable
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="formador_responsable_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Formador responsable del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Grupo de formación
+                                </div>
+
+                                <field
+                                    name="grupo_formacion_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Grupo del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    options="{'no_create': True, 'no_create_edit': True}"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Canal
+                                </div>
+
+                                <field
+                                    name="canal_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Canal del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Tipo de intervención
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="tipo_intervencion"
+                                    nolabel="1"
+                                    placeholder="Seleccione tipo de intervención"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Motivo del plan
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="motivo_plan"
+                                    nolabel="1"
+                                    placeholder="Seleccione motivo"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 2. DETALLE DEL PLAN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            2. DETALLE DEL PLAN
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de inicio
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="fecha_inicio"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de fin estimada
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="fecha_fin_estimada"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de fin real
+                                </div>
+
+                                <field
+                                    name="fecha_fin_real"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <div class="col-lg-5">
+
+                                <div class="o_form_label">
+                                    Estado del plan
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <div class="text-muted">
+                                    Estado actual del plan.
+                                </div>
+
+                                <field
+                                    name="estado_plan"
+                                    widget="estado_plan_buttons"
+                                    nolabel="1"/>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <div class="col-lg-6">
+
+                                <div class="o_form_label">
+                                    Descripción del plan
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <div class="fi_observaciones">
+                                    <field
+                                        name="descripcion_plan"
+                                        widget="char_counter_text"
+                                        nolabel="1"
+                                        placeholder="Describa el objetivo y las actividades del plan de intervención..."/>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Horas planificadas
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="horas_planificadas"
+                                    nolabel="1"
+                                    placeholder="Ej: 20 horas"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Horas ejecutadas
+                                </div>
+
+                                <field
+                                    name="horas_ejecutadas"
+                                    nolabel="1"
+                                    placeholder="Ej: 12 horas"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">% Avance / Cumplimiento&#160;<span class="fi_required">*</span></div>
+
+                                <div class="fi_suffix_box">
+                                    <field
+                                        name="porcentaje_avance"
+                                        readonly="1"
+                                        class="pct_readonly_reset"
+                                        nolabel="1"/>
+                                    <span>%</span>
+                                </div>
+
+                                <div class="text-muted">
+                                    Calculado automáticamente (horas ejecutadas / planificadas).
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 3. SEGUIMIENTO Y EVALUACIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            3. SEGUIMIENTO Y EVALUACIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Criterios de evaluación
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="criterio_evaluacion"
+                                    nolabel="1"
+                                    placeholder="Seleccione criterios de evaluación"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Meta esperada
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="meta_esperada"
+                                    nolabel="1"
+                                    placeholder="Ej: 90%"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Resultado obtenido
+                                </div>
+
+                                <field
+                                    name="resultado_obtenido"
+                                    nolabel="1"
+                                    placeholder="Ej: 85%"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">% Cumplimiento&#160;<span class="fi_required">*</span></div>
+
+                                <div class="fi_suffix_box">
+                                    <field
+                                        name="porcentaje_cumplimiento"
+                                        class="pct_readonly_reset"
+                                        nolabel="1"
+                                        placeholder="Ej: 94"/>
+                                    <span>%</span>
+                                </div>
+
+                                <div class="text-muted">
+                                    Calculado automáticamente (resultado / meta).
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Evidencias (Opcional)
+                                </div>
+                                <div class="text-muted">
+                                    Formatos permitidos: Excel, CSV (Máx. 5 MB).
+                                </div>
+                                <field name="evidencias_nombre" invisible="1"/>
+                                <field name="evidencias" widget="file_dropzone" nolabel="1"/>
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <div class="col-lg-4">
+
+                                <div class="o_form_label">
+                                    Observaciones del formador
+                                </div>
+
+                                <field
+                                    name="observaciones_formador"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Observaciones y seguimiento del formador..."/>
+
+                            </div>
+
+                            <div class="col-lg-4">
+
+                                <div class="o_form_label">
+                                    Comentarios del participante
+                                </div>
+
+                                <field
+                                    name="comentarios_participante"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Comentarios del participante sobre el plan..."/>
+
+                            </div>
+
+                            <div class="col-lg-4">
+
+                                <div class="o_form_label">
+                                    Acciones / Recomendaciones
+                                </div>
+
+                                <field
+                                    name="acciones_recomendaciones"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Acciones o recomendaciones para continuar con el plan..."/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 4. CIERRE DEL PLAN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            4. CIERRE DEL PLAN
+                            <span class="text-muted" style="font-size: 14px; font-weight: 400;">
+                                (Completar solo si el plan está finalizado o cancelado)
+                            </span>
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de cierre
+                                </div>
+
+                                <field
+                                    name="fecha_cierre"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Motivo de cierre
+                                </div>
+
+                                <field
+                                    name="motivo_cierre"
+                                    nolabel="1"
+                                    placeholder="Seleccione motivo de cierre"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Resultados alcanzados
+                                </div>
+
+                                <field
+                                    name="resultados_alcanzados"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa los resultados alcanzados con el plan..."/>
+
+                            </div>
+
+                            <div class="col-lg-4">
+
+                                <div class="o_form_label">
+                                    Lecciones aprendidas
+                                </div>
+
+                                <field
+                                    name="lecciones_aprendidas"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa las lecciones aprendidas..."/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- PIE DEL FORMULARIO -->
+                    <!-- ================================= -->
+
+                    <div class="fi_footer_info">
+
+                        <i class="fa fa-exclamation-circle"/>
+
+                        <span>
+                            Los campos marcados con
+                            <span class="fi_required">*</span>
+                            son obligatorios.
+                        </span>
+
+                    </div>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+            ACCIÓN
+    =========================== -->
+
+    <record id="action_plan_intervencion" model="ir.actions.act_window">
+        <field name="name">Planes de Intervención</field>
+        <field name="res_model">plan_intervencion</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

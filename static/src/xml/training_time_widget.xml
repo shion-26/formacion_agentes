@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="formacion_calidad.TrainingTimeField">
+        <div class="tt_field">
+
+            <div class="tt_input_group">
+
+                <input type="text"
+                       t-attf-class="tt_input {{ state.error ? 'tt_input_error' : '' }}"
+                       t-att-value="state.displayValue"
+                       t-att-placeholder="props.placeholder || '08:30'"
+                       t-on-input="onInput"
+                       t-on-blur="onBlur"
+                       t-on-keydown="onKeydown"/>
+
+                <div class="tt_meridiem_group">
+
+                    <button type="button"
+                            t-attf-class="tt_meridiem_btn {{ state.meridiem === 'AM' ? 'selected' : '' }}"
+                            t-on-click="() => this.setMeridiem('AM')">
+                        AM
+                    </button>
+
+                    <button type="button"
+                            t-attf-class="tt_meridiem_btn {{ state.meridiem === 'PM' ? 'selected' : '' }}"
+                            t-on-click="() => this.setMeridiem('PM')">
+                        PM
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="tt_error" t-if="state.error" t-esc="state.error"/>
+
+        </div>
+    </t>
+
+</templates>

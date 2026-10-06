@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================
+            VISTA LISTA
+    =========================== -->
+
+    <record id="view_registro_fi_list" model="ir.ui.view">
+        <field name="name">registro_fi.list</field>
+        <field name="model">registro_fi</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="cedula"/>
+                <field name="nombre"/>
+                <field name="estado_final"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==========================
+            FORMULARIO
+    =========================== -->
+
+    <record id="view_registro_fi_form" model="ir.ui.view">
+        <field name="name">registro_fi.form</field>
+        <field name="model">registro_fi</field>
+        <field name="arch" type="xml">
+
+            <form string="Registro Formación Inicial">
+
+                <sheet class="fi_sheet">
+
+                    <!-- CABECERA -->
+
+                    <div class="fi_header">
+
+                        <!-- IZQUIERDA -->
+
+                        <div class="fi_header_left">
+
+                            <div class="fi_logo">
+                                <i class="fa fa-file-text-o fi_logo_icon" title="Registro Formación Inicial"/>
+                            </div>
+
+                            <div>
+
+                                <h1>
+                                    REGISTRO - FORMACIÓN INICIAL
+                                </h1>
+
+                                <p>
+                                    Captura de información de inscritos
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <widget name="fi_action_bar"/>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- INFORMACIÓN PERSONAL -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            1. INFORMACIÓN PERSONAL
+                        </h2>
+
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Cédula / ID
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field
+                                    name="cedula"
+                                    nolabel="1"
+                                    placeholder="Ingrese número de cédula"/>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="o_form_label">
+                                    Nombre completo
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="nombre"
+                                    nolabel="1"
+                                    placeholder="Ingrese nombre completo"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Fecha de nacimiento
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="fecha_nacimiento"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Edad
+                                </div>
+
+                                <field
+                                    name="edad"
+                                    nolabel="1"
+                                    placeholder="Se calcula automáticamente"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Género
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="genero"
+                                    nolabel="1"
+                                    placeholder="Seleccione un género"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- INFORMACIÓN ACADÉMICA / FORMACIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            2. INFORMACIÓN ACADÉMICA / FORMACIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <!-- Campaña -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Campaña
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="campania_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione campaña"/>
+
+                            </div>
+
+                            <!-- Grupo -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Grupo de formación
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="grupo_base_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione grupo"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Número de grupo
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="numero_grupo"
+                                    nolabel="1"
+                                    placeholder="Ej: 45"/>
+
+                            </div>
+
+                            <!-- Formador -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Formador asignado
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="formador_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione formador"
+                                    options="{'no_create': False}"/>
+
+                            </div>
+
+                            <!-- Fecha -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de ingreso
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="fecha_ingreso"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <!-- Tipo -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Tipo de ingreso
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="tipo_ingreso_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione tipo de ingreso"
+                                    options="{'no_create': False}"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- ESTADO FINAL Y EVALUCION -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            3. ESTADO FINAL Y EVALUACIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-5">
+                                <div class="o_form_label">
+                                    Concepto final
+                                </div>
+                                <field name="estado_final" widget="concepto_final_buttons" nolabel="1"/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Nota evaluación final
+                                </div>
+                                <div class="text-muted" style="font-size: 12px; margin-bottom: 4px;">
+                                    (Escala 0 - 100)
+                                </div>
+                                <field name="nota_final" widget="required_integer" nolabel="1" placeholder="Ej: 95"/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Horas de formación recibidas
+                                </div>
+                                <div class="text-muted" style="font-size: 12px; margin-bottom: 4px;">
+                                    (Número de horas)
+                                </div>
+                                <field name="horas_formacion" widget="required_integer" nolabel="1" placeholder="Ej: 80"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- PERIODO DE FORMACIÓN / OBSERVACIONES Y RESUMEN -->
+                    <!-- ================================= -->
+
+                    <div class="row">
+
+                        <div class="col-lg-7">
+
+                            <!-- PERIODO DE FORMACIÓN -->
+
+                            <div class="fi_card fi_card_compact">
+
+                                <h2 class="fi_title">
+                                    4. PERIODO DE FORMACIÓN
+                                </h2>
+
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="o_form_label">
+                                            Fecha de inicio
+                                        </div>
+                                        <field name="fecha_inicio" nolabel="1" placeholder="DD/MM/AAAA"/>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="o_form_label">
+                                            Fecha de finalización
+                                        </div>
+                                        <field name="fecha_fin" nolabel="1" placeholder="DD/MM/AAAA"/>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- OBSERVACIONES -->
+
+                            <div class="fi_card fi_observaciones">
+
+                                <h2 class="fi_title">
+                                    5. OBSERVACIONES
+                                </h2>
+
+                                <div class="o_form_label">
+                                    Observaciones adicionales
+                                </div>
+
+                                <field
+                                    name="observaciones"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Ingrese observaciones relevantes del inscrito..."/>
+
+                            </div>
+
+                        </div>
+
+                        <!-- RESUMEN -->
+
+                        <div class="col-lg-5">
+
+                            <div class="fi_card fi_resumen">
+
+                                <h2 class="fi_title">
+                                    <i class="fa fa-info-circle"/>
+                                    Resumen del registro
+                                </h2>
+
+                                <!-- Estado -->
+
+                                <div class="fi_resumen_item">
+
+                                    <div class="fi_resumen_left">
+                                        <i class="fa fa-check-circle fi_icon"/>
+                                        <span class="fi_resumen_label">
+                                            Estado
+                                        </span>
+                                    </div>
+
+                                    <div class="fi_resumen_right">
+                                        <field
+                                            name="estado_registro"
+                                            nolabel="1"
+                                            widget="badge"/>
+                                    </div>
+
+                                </div>
+
+                                <!-- Fecha -->
+
+                                <div class="fi_resumen_item">
+
+                                    <div class="fi_resumen_left">
+                                        <i class="fa fa-calendar fi_icon"/>
+                                        <span class="fi_resumen_label">
+                                            Fecha
+                                        </span>
+                                    </div>
+
+                                    <div class="fi_resumen_right">
+
+                                        <field
+                                            name="resumen_fecha"
+                                            nolabel="1"
+                                            readonly="1"
+                                            class="fi_resumen_valor"/>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Usuario que registra -->
+
+                                <div class="fi_resumen_item">
+
+                                    <div class="fi_resumen_left">
+                                        <i class="fa fa-user fi_icon"/>
+                                        <span class="fi_resumen_label">
+                                            Usuario que registra
+                                        </span>
+                                    </div>
+
+                                    <div class="fi_resumen_right">
+
+                                        <field
+                                            name="usuario_resumen"
+                                            nolabel="1"
+                                            readonly="1"
+                                            class="fi_resumen_valor"/>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- PIE DEL FORMULARIO -->
+                    <!-- ================================= -->
+
+                    <div class="fi_footer_info">
+
+                        <i class="fa fa-info-circle"/>
+
+                        <span>
+                            Los campos marcados con
+                            <span class="fi_required">*</span>
+                            son obligatorios.
+                        </span>
+
+                    </div>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+            ACCIÓN
+    =========================== -->
+
+    <record id="action_registro_fi" model="ir.actions.act_window">
+        <field name="name">Registro Formación Inicial</field>
+        <field name="res_model">registro_fi</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

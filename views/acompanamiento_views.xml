@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================
+            VISTA LISTA
+    =========================== -->
+
+    <record id="view_acompanamiento_list" model="ir.ui.view">
+        <field name="name">acompanamiento.list</field>
+        <field name="model">acompanamiento</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="id_monitoreo"/>
+                <field name="participante_id"/>
+                <field name="formador_evaluador_id"/>
+                <field name="campania_id"/>
+                <field name="fecha_monitoreo"/>
+                <field name="nivel_calidad"/>
+                <field name="score_calidad"/>
+                <field name="alerta_critica"/>
+                <field name="resultado_evaluacion"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==========================
+            FORMULARIO
+    =========================== -->
+
+    <record id="view_acompanamiento_form" model="ir.ui.view">
+        <field name="name">acompanamiento.form</field>
+        <field name="model">acompanamiento</field>
+        <field name="arch" type="xml">
+
+            <form string="Acompañamiento - Monitoreo de Calidad">
+
+                <sheet class="fi_sheet">
+
+                    <!-- CABECERA -->
+
+                    <div class="fi_header">
+
+                        <div class="fi_header_left">
+
+                            <div class="fi_logo">
+                                <i class="fa fa-users fi_logo_icon" title="Acompañamiento"/>
+                            </div>
+
+                            <div>
+                                <h1>
+                                    ACOMPAÑAMIENTO - MONITOREO DE CALIDAD
+                                </h1>
+                                <p>
+                                    Captura de monitoreo y coaching
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <widget name="fi_action_bar"/>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 1. INFORMACIÓN GENERAL -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            1. INFORMACIÓN GENERAL
+                        </h2>
+
+                        <div class="row">
+
+                            <!-- ID Monitoreo -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    ID Monitoreo
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="id_monitoreo"
+                                    nolabel="1"
+                                    placeholder="Ej: MON-000123"/>
+
+                            </div>
+
+                            <!-- Fecha -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha del monitoreo
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="fecha_monitoreo"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <!-- Hora inicio -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Hora inicio
+                                </div>
+
+                                <field
+                                    name="hora_inicio"
+                                    widget="training_time"
+                                    nolabel="1"
+                                    placeholder="08:30"/>
+
+                            </div>
+
+                            <!-- Hora fin -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Hora fin
+                                </div>
+
+                                <field
+                                    name="hora_fin"
+                                    widget="training_time"
+                                    nolabel="1"
+                                    placeholder="09:15"/>
+
+                            </div>
+
+                            <!-- Formador -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Formador / Evaluador
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="formador_evaluador_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Formador / Evaluador del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <!-- Campaña -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Campaña
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="campania_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Campaña del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <!-- Agente -->
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Agente evaluado
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="participante_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione agente"/>
+
+                            </div>
+
+                            <!-- Grupo -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Grupo de formación
+                                </div>
+
+                                <field
+                                    name="grupo_formacion_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Grupo del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    options="{'no_create': True, 'no_create_edit': True}"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <!-- Canal -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Canal
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="canal_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione canal"/>
+
+                            </div>
+
+                            <!-- Tipo -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Tipo de interacción
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="tipo_interaccion"
+                                    nolabel="1"
+                                    placeholder="Seleccione tipo de interacción"/>
+
+                            </div>
+
+                            <!-- ID Interacción -->
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    ID interacción / Contacto (Opcional)
+                                </div>
+
+                                <field
+                                    name="id_interaccion"
+                                    nolabel="1"
+                                    placeholder="Ej: INT-456789"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 2. EVALUACIÓN DE CALIDAD -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            2. EVALUACIÓN DE CALIDAD
+                        </h2>
+
+                        <div class="row">
+
+                            <!-- Score -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Score de calidad (%)
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <div class="text-muted">
+                                    Ingrese el porcentaje obtenido.
+                                </div>
+
+                                <field
+                                    name="score_calidad"
+                                    nolabel="1"
+                                    placeholder="Ej: 85%"/>
+
+                            </div>
+
+                            <!-- Nivel -->
+
+                            <div class="col-lg-5">
+
+                                <div class="o_form_label">
+                                    Nivel de calidad
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <div class="text-muted">
+                                    Calculado automáticamente según el score.
+                                </div>
+
+                                <field
+                                    name="nivel_calidad"
+                                    widget="nivel_calidad_buttons"
+                                    class="qc_readonly_reset"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <!-- Resultado -->
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Resultado
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <div class="text-muted">
+                                    Seleccione resultado general.
+                                </div>
+
+                                <field
+                                    name="resultado_evaluacion"
+                                    nolabel="1"
+                                    placeholder="Seleccione resultado"/>
+
+                            </div>
+
+                            <!-- CSAT -->
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    CSAT / Satisfacción del usuario
+                                </div>
+
+                                <div class="text-muted">
+                                    Escala de 1 a 5.
+                                </div>
+
+                                <field
+                                    name="csat"
+                                    widget="csat_buttons"
+                                    nolabel="1"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 3. MÉTRICAS DE GESTIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            3. MÉTRICAS DE GESTIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <!-- Tiempo Gestión -->
+
+                            <div class="col-lg">
+
+                                <div class="o_form_label">
+                                    Tiempo de gestión total (mm:ss)
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <div class="text-muted">
+                                    Duración total de la interacción.
+                                </div>
+
+                                <field
+                                    name="tiempo_gestion_total"
+                                    widget="mmss_time"
+                                    nolabel="1"
+                                    placeholder="00:00"/>
+
+                            </div>
+
+                            <!-- Espera -->
+
+                            <div class="col-lg">
+
+                                <div class="o_form_label">
+                                    Tiempo de espera (mm:ss)
+                                </div>
+
+                                <div class="text-muted">
+                                    Tiempo que esperó el usuario.
+                                </div>
+
+                                <field
+                                    name="tiempo_espera"
+                                    widget="mmss_time"
+                                    nolabel="1"
+                                    placeholder="00:00"/>
+
+                            </div>
+
+                            <!-- Conversación -->
+
+                            <div class="col-lg">
+
+                                <div class="o_form_label">
+                                    Tiempo de conversación (mm:ss)
+                                </div>
+
+                                <div class="text-muted">
+                                    Tiempo efectivo de conversación.
+                                </div>
+
+                                <field
+                                    name="tiempo_conversacion"
+                                    widget="mmss_time"
+                                    nolabel="1"
+                                    placeholder="00:00"/>
+
+                            </div>
+
+                            <!-- Post Gestión -->
+
+                            <div class="col-lg">
+
+                                <div class="o_form_label">
+                                    Tiempo de post-gestión (mm:ss)
+                                </div>
+
+                                <div class="text-muted">
+                                    Tiempo de actividades posteriores.
+                                </div>
+
+                                <field
+                                    name="tiempo_post_gestion"
+                                    widget="mmss_time"
+                                    nolabel="1"
+                                    placeholder="00:00"/>
+
+                            </div>
+
+                            <!-- TMO -->
+
+                            <div class="col-lg">
+
+                                <div class="o_form_label">
+                                    TMO (mm:ss)
+                                </div>
+
+                                <div class="text-muted">
+                                    Tiempo medio de gestión.
+                                </div>
+
+                                <field
+                                    name="tmo"
+                                    widget="mmss_time"
+                                    nolabel="1"
+                                    placeholder="00:00"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 4. HALLAZGOS Y ALERTAS -->
+                    <!-- ================================= -->
+
+                    <div class="row">
+
+                        <!-- HALLAZGOS -->
+
+                        <div class="col-lg-6">
+
+                            <div class="fi_card">
+
+                                <h2 class="fi_title">
+                                    4. HALLAZGOS Y ALERTAS
+                                </h2>
+
+                                <div class="fi_compact_group fi_hallazgos_group">
+
+                                    <!-- ALERTA CRÍTICA -->
+
+                                    <div class="fi_compact_item fi_field_auto">
+
+                                        <div class="o_form_label">
+                                            ¿Se detectaron alertas críticas?
+                                            <span class="fi_required">*</span>
+                                        </div>
+
+                                        <field
+                                            name="alerta_critica"
+                                            widget="alerta_critica_buttons"
+                                            nolabel="1"/>
+
+                                    </div>
+
+                                    <!-- ALERTAS CRÍTICAS -->
+
+                                    <div class="fi_compact_item fi_field_compact">
+
+                                        <div class="o_form_label">
+                                            Cantidad de alertas críticas
+                                        </div>
+
+                                        <div class="text-muted">
+                                            Número de alertas críticas.
+                                        </div>
+
+                                        <div class="fi_compact_field">
+                                            <field
+                                                name="cantidad_alertas_criticas"
+                                                readonly="alerta_critica != 'si'"
+                                                nolabel="1"
+                                                placeholder="Ej: 2"/>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- ALERTAS MENORES -->
+
+                                    <div class="fi_compact_item fi_field_compact">
+
+                                        <div class="o_form_label">
+                                            Cantidad de alertas menores
+                                        </div>
+
+                                        <div class="text-muted">
+                                            Número de alertas menores.
+                                        </div>
+
+                                        <div class="fi_compact_field">
+                                            <field
+                                                name="cantidad_alertas_menores"
+                                                readonly="alerta_critica != 'si'"
+                                                nolabel="1"
+                                                placeholder="Ej: 1"/>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FALLAS -->
+
+                        <div class="col-lg-6">
+
+                            <div class="fi_card">
+
+                                <h2 class="fi_title">
+                                    5. FALLAS DETECTADAS
+                                </h2>
+
+                                <div class="fi_compact_group fi_fallas_group">
+
+                                    <!-- MOTIVO -->
+
+                                    <div class="fi_compact_item fi_field_select">
+
+                                        <div class="o_form_label">
+                                            Motivo de la(s) falla(s)
+                                            <span class="fi_required">*</span>
+                                        </div>
+
+                                        <div class="text-muted">
+                                            Seleccione el motivo principal.
+                                        </div>
+
+                                        <field
+                                            name="motivo_falla"
+                                            widget="selection_disabled_placeholder"
+                                            class="sel_readonly_reset"
+                                            required="alerta_critica == 'si'"
+                                            readonly="alerta_critica != 'si'"
+                                            nolabel="1"
+                                            placeholder="Seleccione motivo de falla"/>
+
+                                    </div>
+
+                                    <!-- DESCRIPCIÓN -->
+
+                                    <div class="fi_compact_item fi_field_grow">
+
+                                        <div class="o_form_label">
+                                            Descripción de la(s) falla(s)
+                                        </div>
+
+                                        <div class="text-muted">
+                                            Describa detalladamente la falla detectada.
+                                        </div>
+
+                                        <div class="fi_compact_textarea">
+                                            <field
+                                                name="descripcion_fallas"
+                                                widget="char_counter_text"
+                                                class="cc_readonly_reset"
+                                                readonly="alerta_critica != 'si'"
+                                                nolabel="1"
+                                                placeholder="Describa la falla detectada..."/>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 6. ACCIONES DE COACHING / RETROALIMENTACIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            6. ACCIONES DE COACHING / RETROALIMENTACIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <!-- FORTALEZAS -->
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Fortalezas identificadas
+                                </div>
+
+                                <div class="text-muted">
+                                    Aspectos positivos identificados.
+                                </div>
+
+                                <field
+                                    name="fortalezas"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa las fortalezas..."/>
+
+                            </div>
+
+                            <!-- OPORTUNIDADES -->
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Oportunidades de mejora
+                                </div>
+
+                                <div class="text-muted">
+                                    Aspectos por fortalecer.
+                                </div>
+
+                                <field
+                                    name="oportunidades_mejora"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa las oportunidades..."/>
+
+                            </div>
+
+                            <!-- PLAN DE ACCIÓN -->
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Compromisos / Plan de acción
+                                </div>
+
+                                <div class="text-muted">
+                                    Acciones acordadas con el agente.
+                                </div>
+
+                                <field
+                                    name="compromisos_plan_accion"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa el plan de acción..."/>
+
+                            </div>
+
+                            <!-- FECHA -->
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Fecha de seguimiento
+                                </div>
+
+                                <div class="text-muted">
+                                    Próxima fecha de acompañamiento.
+                                </div>
+
+                                <field
+                                    name="fecha_seguimiento"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- PIE DEL FORMULARIO -->
+                    <!-- ================================= -->
+
+                    <div class="fi_footer_info">
+
+                        <i class="fa fa-exclamation-circle"/>
+
+                        <span>
+                            Los campos marcados con
+                            <span class="fi_required">*</span>
+                            son obligatorios.
+                        </span>
+
+                    </div>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+            ACCIÓN
+    =========================== -->
+
+    <record id="action_acompanamiento" model="ir.actions.act_window">
+        <field name="name">Acompañamiento</field>
+        <field name="res_model">acompanamiento</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

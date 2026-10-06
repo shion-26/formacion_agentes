@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="formacion_calidad.CharCounterText">
+        <div class="cc_text_field">
+
+            <textarea
+                class="o_input cc_textarea"
+                t-att-placeholder="props.placeholder"
+                t-att-maxlength="props.maxlength"
+                t-att-readonly="props.readonly"
+                t-ref="input"
+                t-on-input="onInput"/>
+
+            <div t-attf-class="cc_counter {{ state.length > props.maxlength ? 'cc_counter_over' : '' }}">
+                <t t-esc="state.length"/>/<t t-esc="props.maxlength"/>
+            </div>
+
+        </div>
+    </t>
+
+</templates>

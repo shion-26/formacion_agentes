@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="formacion_agentes.EstadoFinalActividadButtons">
+        <div class="qc_buttons_group">
+            <t t-foreach="options" t-as="opt" t-key="opt.value">
+                <div t-attf-class="qc_button {{ isSelected(opt.value) ? 'selected ' + opt.colorClass : '' }}"
+                     t-on-click="() => this.onSelect(opt.value)">
+                    <i class="fa fa-circle-o qc_icon"/>
+                    <span class="qc_label" t-esc="opt.label"/>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

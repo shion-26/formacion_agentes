@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================
+            VISTA LISTA
+    =========================== -->
+
+    <record id="view_control_asistencia_list" model="ir.ui.view">
+        <field name="name">control.asistencia.list</field>
+        <field name="model">control.asistencia</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="id_sesion"/>
+                <field name="participante_id"/>
+                <field name="formador_id"/>
+                <field name="fecha_sesion"/>
+                <field name="tipo_sesion"/>
+                <field name="estado_asistencia"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==========================
+            FORMULARIO
+    =========================== -->
+
+    <record id="view_control_asistencia_form" model="ir.ui.view">
+        <field name="name">control.asistencia.form</field>
+        <field name="model">control.asistencia</field>
+        <field name="arch" type="xml">
+
+            <form string="Asistencia - Control de Formación">
+
+                <sheet class="fi_sheet">
+
+                    <!-- CABECERA -->
+
+                    <div class="fi_header">
+
+                        <div class="fi_header_left">
+
+                            <div class="fi_logo">
+                                <i class="fa fa-calendar-check-o fi_logo_icon" title="Control de Asistencia"/>
+                            </div>
+
+                            <div>
+                                <h1>
+                                    ASISTENCIA - CONTROL DE FORMACIÓN
+                                </h1>
+                                <p>
+                                    Captura de asistencia a sesiones de formación y acompañamiento
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <widget name="fi_action_bar"/>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 1. INFORMACIÓN GENERAL DE LA SESIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            1. INFORMACIÓN GENERAL DE LA SESIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    ID Sesión
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="id_sesion"
+                                    nolabel="1"
+                                    placeholder="Ej: SES-000123"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de la sesión
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="fecha_sesion"
+                                    nolabel="1"
+                                    placeholder="DD/MM/AAAA"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Hora inicio
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="hora_inicio"
+                                    widget="training_time"
+                                    nolabel="1"
+                                    placeholder="08:30"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Hora fin
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="hora_fin"
+                                    widget="training_time"
+                                    nolabel="1"
+                                    placeholder="09:15"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Duración
+                                </div>
+
+                                <field
+                                    name="duracion"
+                                    nolabel="1"
+                                    readonly="1"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Tipo de sesión
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="tipo_sesion"
+                                    nolabel="1"
+                                    placeholder="Seleccione tipo de sesión"/>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Formador
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="formador_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Formador del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Grupo de formación
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="grupo_formacion_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Grupo del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    options="{'no_create': True, 'no_create_edit': True}"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Campaña
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="campania_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Campaña del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Canal
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="canal_id"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Canal del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Modalidad
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="modalidad"
+                                    nolabel="1"
+                                    placeholder="Seleccione modalidad"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 2. INFORMACIÓN DEL PARTICIPANTE -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            2. INFORMACIÓN DEL PARTICIPANTE
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Agente / Participante
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="participante_id"
+                                    nolabel="1"
+                                    placeholder="Seleccione agente"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Cédula / ID
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="cedula"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Cédula del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Cargo / Rol
+                                </div>
+
+                                <field
+                                    name="cargo_id"
+                                    nolabel="1"
+                                    placeholder="Ingrese cargo o rol"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Fecha de ingreso a la campaña
+                                </div>
+
+                                <field
+                                    name="fecha_ingreso"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Fecha de ingreso del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Antigüedad en campaña
+                                </div>
+
+                                <field
+                                    name="antiguedad"
+                                    widget="readonly_related_placeholder"
+                                    placeholder="Antigüedad del participante"
+                                    readonly="1"
+                                    force_save="1"
+                                    nolabel="1"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 3. ASISTENCIA A LA SESIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            3. ASISTENCIA A LA SESIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-6">
+
+                                <div class="o_form_label">
+                                    Estado de asistencia
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="estado_asistencia"
+                                    widget="estado_asistencia_buttons"
+                                    nolabel="1"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Motivo de inasistencia / Justificación
+                                </div>
+
+                                <div class="text-muted">
+                                    Aplica si el estado es: No asistió o Justificado.
+                                </div>
+
+                                <field
+                                    name="motivo_inasistencia"
+                                    widget="selection_disabled_placeholder"
+                                    class="sel_readonly_reset"
+                                    nolabel="1"
+                                    placeholder="Seleccione motivo"
+                                    readonly="estado_asistencia in ('asistio', 'no_programado')"
+                                    required="estado_asistencia in ('no_asistio', 'justificado')"/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Observaciones
+                                </div>
+
+                                <field
+                                    name="observaciones"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Ingrese observaciones adicionales..."/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 4. DETALLE DE LA SESIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            4. DETALLE DE LA SESIÓN
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Tema / Contenido tratado
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="tema"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa el tema o contenido principal..."/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Objetivo de la sesión
+                                    <span class="fi_required">*</span>
+                                </div>
+
+                                <field
+                                    name="objetivo"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa el objetivo de la sesión..."/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Actividades realizadas
+                                </div>
+
+                                <field
+                                    name="actividades"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Describa las actividades realizadas..."/>
+
+                            </div>
+
+                            <div class="col-lg-3">
+
+                                <div class="o_form_label">
+                                    Material / Recurso utilizado
+                                </div>
+
+                                <field
+                                    name="material_utilizado"
+                                    nolabel="1"
+                                    placeholder="Indique el material o recurso utilizado..."/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 5. EVALUACIÓN RÁPIDA DE LA SESIÓN -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            5. EVALUACIÓN RÁPIDA DE LA SESIÓN
+                            <span class="text-muted" style="font-size: 14px; font-weight: 400;">
+                                (Opcional)
+                            </span>
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Claridad del contenido (1-5)
+                                </div>
+
+                                <field
+                                    name="claridad"
+                                    nolabel="1"
+                                    placeholder="Seleccione"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Aplicabilidad (1-5)
+                                </div>
+
+                                <field
+                                    name="aplicabilidad"
+                                    nolabel="1"
+                                    placeholder="Seleccione"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Utilidad (1-5)
+                                </div>
+
+                                <field
+                                    name="utilidad"
+                                    nolabel="1"
+                                    placeholder="Seleccione"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+
+                                <div class="o_form_label">
+                                    Participación del grupo (1-5)
+                                </div>
+
+                                <field
+                                    name="participacion"
+                                    nolabel="1"
+                                    placeholder="Seleccione"/>
+
+                            </div>
+
+                            <div class="col-lg-4">
+
+                                <div class="o_form_label">
+                                    Observaciones del formador
+                                </div>
+
+                                <field
+                                    name="observaciones_formador"
+                                    widget="char_counter_text"
+                                    nolabel="1"
+                                    placeholder="Comentarios sobre el desarrollo de la sesión..."/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- PIE DEL FORMULARIO -->
+                    <!-- ================================= -->
+
+                    <div class="fi_footer_info">
+
+                        <i class="fa fa-exclamation-circle"/>
+
+                        <span>
+                            Los campos marcados con
+                            <span class="fi_required">*</span>
+                            son obligatorios.
+                        </span>
+
+                    </div>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+            ACCIÓN
+    =========================== -->
+
+    <record id="action_control_asistencia" model="ir.actions.act_window">
+        <field name="name">Control de Asistencia</field>
+        <field name="res_model">control.asistencia</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

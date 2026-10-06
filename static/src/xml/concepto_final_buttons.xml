@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+  <t t-name="formacion_calidad.ConceptoFinalButtons">
+    <div class="cf_buttons_group">
+      <t t-foreach="options" t-as="opt" t-key="opt.value">
+        <div t-attf-class="cf_button {{ isSelected(opt.value) ? 'selected ' + opt.colorClass : '' }}"
+             t-on-click="() => this.onSelect(opt.value)">
+          <i t-attf-class="fa {{opt.icon}} cf_icon"/>
+          <span class="cf_label" t-esc="opt.label"/>
+        </div>
+      </t>
+    </div>
+  </t>
+</templates>

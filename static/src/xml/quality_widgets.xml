@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- NIVEL DE CALIDAD -->
+    <t t-name="formacion_calidad.NivelCalidadButtons">
+        <div class="qc_buttons_group">
+            <t t-foreach="options" t-as="opt" t-key="opt.value">
+                <div t-attf-class="qc_button {{ isSelected(opt.value) ? 'selected ' + opt.colorClass : '' }}"
+                     t-on-click="() => this.onSelect(opt.value)">
+                    <i class="fa fa-circle-o qc_icon"/>
+                    <span class="qc_label" t-esc="opt.label"/>
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <!-- CSAT -->
+    <t t-name="formacion_calidad.CsatButtons">
+        <div class="csat_buttons_group">
+            <t t-foreach="options" t-as="opt" t-key="opt">
+                <div t-attf-class="csat_button {{ isSelected(opt) ? 'selected' : '' }}"
+                     t-on-click="() => this.onSelect(opt)">
+                    <span t-esc="opt"/>
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <!-- ALERTA CRÍTICA -->
+    <t t-name="formacion_calidad.AlertaCriticaButtons">
+        <div class="qc_buttons_group qc_buttons_group_inline">
+            <t t-foreach="options" t-as="opt" t-key="opt.value">
+                <div t-attf-class="qc_button {{ isSelected(opt.value) ? 'selected ' + opt.colorClass : '' }}"
+                     t-on-click="() => this.onSelect(opt.value)">
+                    <i class="fa fa-circle-o qc_icon"/>
+                    <span class="qc_label" t-esc="opt.label"/>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

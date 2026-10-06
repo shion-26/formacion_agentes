@@ -1,0 +1,81 @@
+<odoo>
+
+    <record id="view_training_group_session_tree" model="ir.ui.view">
+        <field name="name">training.group.session.tree</field>
+        <field name="model">training.group.session</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="codigo_grupo"/>
+                <field name="grupo_base_id"/>
+                <field name="numero_grupo"/>
+                <field name="participantes_inscritos"/>
+                <field name="participantes_aptos"/>
+                <field name="porcentaje_certificacion"/>
+                <field name="horas_hombre"/>
+                <field name="promedio_evaluacion"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_training_group_session_form" model="ir.ui.view">
+        <field name="name">training.group.session.form</field>
+        <field name="model">training.group.session</field>
+        <field name="arch" type="xml">
+            <form string="Grupo de formación real">
+                <sheet>
+                    <group>
+                        <field name="grupo_base_id"/>
+                        <field name="numero_grupo"/>
+                        <field name="codigo_grupo" readonly="1"/>
+                    </group>
+                    <group string="Indicadores">
+                        <field name="participantes_inscritos" readonly="1"/>
+                        <field name="participantes_aptos" readonly="1"/>
+                        <field name="porcentaje_certificacion" readonly="1"/>
+                        <field name="horas_hombre" readonly="1"/>
+                        <field name="promedio_evaluacion" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_training_group_session_pivot" model="ir.ui.view">
+        <field name="name">training.group.session.pivot</field>
+        <field name="model">training.group.session</field>
+        <field name="arch" type="xml">
+            <pivot string="Indicadores por grupo">
+                <field name="grupo_base_id" type="row"/>
+                <field name="participantes_inscritos" type="measure"/>
+                <field name="participantes_aptos" type="measure"/>
+                <field name="porcentaje_certificacion" type="measure"/>
+                <field name="horas_hombre" type="measure"/>
+                <field name="promedio_evaluacion" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_training_group_session_graph" model="ir.ui.view">
+        <field name="name">training.group.session.graph</field>
+        <field name="model">training.group.session</field>
+        <field name="arch" type="xml">
+            <graph string="Indicadores por grupo" type="bar">
+                <field name="grupo_base_id" type="row"/>
+                <field name="porcentaje_certificacion" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_training_group_session" model="ir.actions.act_window">
+        <field name="name">Grupos de formación (reales)</field>
+        <field name="res_model">training.group.session</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_training_group_session_report" model="ir.actions.act_window">
+        <field name="name">Indicadores por grupo</field>
+        <field name="res_model">training.group.session</field>
+        <field name="view_mode">pivot,graph</field>
+    </record>
+
+</odoo>

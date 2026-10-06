@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="formacion_agentes.FiActionBar">
+        <div class="fi_header_right">
+
+            <button type="button" class="btn fi_btn_secondary" t-on-click="onClickLimpiar">
+                <i class="fa fa-refresh"/>
+                <span>Limpiar formulario</span>
+            </button>
+
+            <button type="button" class="btn fi_btn_primary" t-on-click="onClickGuardar">
+                <i class="fa fa-save"/>
+                <span>Guardar registro</span>
+            </button>
+
+        </div>
+    </t>
+</templates>

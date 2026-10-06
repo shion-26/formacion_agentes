@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Igual que web.SelectionField, pero nunca sustituye el <select> por
+         un <span> en modo readonly: lo mantiene siempre visible (con su
+         placeholder y apariencia normales) y solo agrega t-att-disabled
+         con la misma condición de props.readonly. -->
+
+    <t t-name="formacion_agentes.SelectionDisabledPlaceholder">
+        <select
+            class="o_input pe-3"
+            t-on-change="onChange"
+            t-on-click.stop="() =&gt; {}"
+            t-att-id="props.id"
+            t-att-disabled="props.readonly">
+            <option
+                t-att-selected="false === value"
+                t-att-value="stringify(false)"
+                t-esc="this.props.placeholder || ''"
+                t-attf-style="{{ props.required ? 'display:none' : '' }}"
+            />
+            <t t-foreach="options" t-as="option" t-key="option[0]">
+                <option
+                    t-att-selected="option[0] === value"
+                    t-att-value="stringify(option[0])"
+                    t-esc="option[1]"
+                />
+            </t>
+        </select>
+    </t>
+
+</templates>

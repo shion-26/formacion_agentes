@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==========================
+            VISTA LISTA
+    =========================== -->
+
+    <record id="view_programacion_actividades_list" model="ir.ui.view">
+        <field name="name">programacion.actividad.list</field>
+        <field name="model">programacion.actividad</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="id_actividad"/>
+                <field name="fecha_programada"/>
+                <field name="tipo_actividad"/>
+                <field name="formador_id"/>
+                <field name="modalidad"/>
+                <field name="estado_programacion"/>
+                <field name="estado_final"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==========================
+            FORMULARIO
+    =========================== -->
+
+    <record id="view_programacion_actividades_form" model="ir.ui.view">
+        <field name="name">programacion.actividad.form</field>
+        <field name="model">programacion.actividad</field>
+        <field name="arch" type="xml">
+
+            <form string="Programación de Actividades" js_class="programacion_actividad_form">
+
+                <sheet class="fi_sheet">
+
+                    <!-- CABECERA -->
+
+                    <div class="fi_header">
+
+                        <div class="fi_header_left">
+
+                            <div class="fi_logo">
+                                <i class="fa fa-calendar-o fi_logo_icon" title="Programación de Actividades"/>
+                            </div>
+
+                            <div>
+                                <h1>
+                                    PROGRAMACIÓN DE ACTIVIDADES
+                                </h1>
+                                <p>
+                                    Captura de programación y planificación de actividades
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <widget name="fi_action_bar"/>
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 1. INFORMACIÓN GENERAL DE LA ACTIVIDAD -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            1. INFORMACIÓN GENERAL DE LA ACTIVIDAD
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2 fi_field_disabled">
+                                <div class="o_form_label">
+                                    ID Actividad
+                                </div>
+                                <field name="id_actividad" nolabel="1" readonly="1" force_save="1"/>
+                                <div class="text-muted">
+                                    Se asigna automáticamente.
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Fecha programada
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="fecha_programada" nolabel="1" placeholder="DD/MM/AAAA"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Hora inicio programada
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="hora_inicio" widget="training_time" nolabel="1" placeholder="08:30"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Hora fin programada
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="hora_fin" widget="training_time" nolabel="1" placeholder="09:15"/>
+                            </div>
+
+                            <div class="col-lg-2 fi_field_disabled">
+                                <div class="o_form_label">
+                                    Duración programada
+                                </div>
+                                <field name="duracion" nolabel="1" readonly="1" placeholder="Ej: 35 minutos"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Tipo de actividad
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="tipo_actividad" nolabel="1" placeholder="Seleccione tipo de actividad"/>
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Modalidad
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="modalidad" nolabel="1" placeholder="Seleccione modalidad"/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Formador responsable
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="formador_id" nolabel="1" placeholder="Seleccione formador"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Grupo de formación
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="grupo_formacion_id" nolabel="1" placeholder="Seleccione grupo" options="{'no_create': True, 'no_create_edit': True}"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Campaña
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="campania_id" nolabel="1" placeholder="Seleccione campaña"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Canal
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="canal_id" nolabel="1" placeholder="Seleccione canal"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 2. DETALLE DE LA ACTIVIDAD -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            2. DETALLE DE LA ACTIVIDAD
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Objetivo de la actividad
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="objetivo" widget="char_counter_text" nolabel="1" placeholder="Describa el objetivo principal de la actividad..."/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Contenido / Temas a tratar
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="contenido" widget="char_counter_text" nolabel="1" placeholder="Describa los temas o contenidos que se abordarán..."/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Metodología
+                                </div>
+                                <field name="metodologia" nolabel="1" placeholder="Seleccione metodología"/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Recursos / Materiales requeridos
+                                </div>
+                                <field name="recursos" widget="char_counter_text" nolabel="1" placeholder="Liste los recursos o materiales necesarios..."/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 3. PARTICIPANTES PROGRAMADOS -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            3. PARTICIPANTES PROGRAMADOS
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Participantes esperados
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="participantes_esperados" nolabel="1" placeholder="Ej: 20"/>
+                                <div class="text-muted">
+                                    Número de participantes.
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Grupo objetivo
+                                    <span class="fi_required">*</span>
+                                </div>
+                                <field name="grupo_objetivo" nolabel="1" placeholder="Seleccione grupo objetivo"/>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="o_form_label">
+                                    Criterio de selección
+                                </div>
+                                <field name="criterio_seleccion" widget="char_counter_text" nolabel="1" placeholder="Describa el criterio de selección de participantes..."/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Lista de participantes (Opcional)
+                                </div>
+                                <field name="lista_participantes_nombre" invisible="1"/>
+                                <field name="lista_participantes" widget="file_dropzone" nolabel="1"/>
+                                <div class="text-muted">
+                                    Formatos permitidos: Excel, CSV (Máx. 5 MB).
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 4. LUGAR / PLATAFORMA  /  5. ESTADO Y CONTROL -->
+                    <!-- ================================= -->
+
+                    <div class="row">
+
+                        <!-- LUGAR -->
+
+                        <div class="col-lg-5">
+
+                            <div class="fi_card">
+
+                                <h2 class="fi_title">
+                                    4. LUGAR / PLATAFORMA
+                                </h2>
+
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="o_form_label">
+                                            Lugar / Plataforma
+                                            <span class="fi_required">*</span>
+                                        </div>
+                                        <field name="lugar" nolabel="1" placeholder="Seleccione lugar o plataforma"/>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="o_form_label">
+                                            Enlace / Ubicación (Si aplica)
+                                        </div>
+                                        <field name="enlace" nolabel="1" placeholder="Ingrese enlace o ubicación..."/>
+                                        <div class="text-muted">
+                                            Ej: Link de Teams, Sala, Dirección física, etc.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ESTADO Y CONTROL -->
+
+                        <div class="col-lg-7">
+
+                            <div class="fi_card">
+
+                                <h2 class="fi_title">
+                                    5. ESTADO Y CONTROL
+                                </h2>
+
+                                <div class="row">
+
+                                    <div class="col-lg-9">
+                                        <div class="o_form_label">
+                                            Estado de la programación
+                                            <span class="fi_required">*</span>
+                                        </div>
+                                        <field name="estado_programacion" widget="estado_programacion_buttons" nolabel="1"/>
+                                    </div>
+
+                                    <div class="col-lg-3" style="margin-left: -35px;">
+                                        <div class="o_form_label">
+                                            Fecha de registro
+                                            <span class="fi_required">*</span>
+                                        </div>
+                                        <field name="fecha_registro" nolabel="1" placeholder="DD/MM/AAAA"/>
+                                    </div>
+
+                                </div>
+
+                                <div class="row mt-3">
+
+                                    <div class="col-lg-5">
+                                        <div class="o_form_label">
+                                            Registrado por
+                                        </div>
+                                        <field name="registrado_por" nolabel="1" readonly="1"/>
+                                        <div class="text-muted">
+                                            Se completa automáticamente con el usuario que registra.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-7">
+                                        <div class="o_form_label">
+                                            Observaciones generales
+                                        </div>
+                                        <field name="observaciones" widget="char_counter_text" nolabel="1" placeholder="Observaciones sobre la programación de la actividad..."/>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- 6. CONFIRMACIÓN Y SEGUIMIENTO -->
+                    <!-- ================================= -->
+
+                    <div class="fi_card">
+
+                        <h2 class="fi_title">
+                            6. CONFIRMACIÓN Y SEGUIMIENTO
+                            <span class="text-muted" style="font-size: 14px; font-weight: 400;">
+                                (Para uso posterior)
+                            </span>
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Fecha de confirmación
+                                </div>
+                                <field name="fecha_confirmacion" nolabel="1" placeholder="DD/MM/AAAA"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Confirmado por
+                                </div>
+                                <field name="confirmado_por" nolabel="1" placeholder="Nombre del usuario que confirma"/>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="o_form_label">
+                                    Fecha de ejecución real
+                                </div>
+                                <field name="fecha_ejecucion" nolabel="1" placeholder="DD/MM/AAAA"/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Estado final
+                                </div>
+                                <field name="estado_final" widget="estado_final_actividad_buttons" nolabel="1"/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="o_form_label">
+                                    Observaciones de seguimiento
+                                </div>
+                                <field name="observaciones_seguimiento" widget="char_counter_text" nolabel="1" placeholder="Observaciones de seguimiento o cambios..."/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- PIE DEL FORMULARIO -->
+                    <!-- ================================= -->
+
+                    <div class="fi_footer_info">
+                        <i class="fa fa-exclamation-circle"/>
+                        <span>
+                            Los campos marcados con
+                            <span class="fi_required">*</span>
+                            son obligatorios.
+                        </span>
+                    </div>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+            ACCIÓN
+    =========================== -->
+
+    <record id="action_programacion_actividades" model="ir.actions.act_window">
+        <field name="name">Programación de Actividades</field>
+        <field name="res_model">programacion.actividad</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

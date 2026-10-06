@@ -1,0 +1,33 @@
+<odoo>
+
+    <record id="view_training_group_tree" model="ir.ui.view">
+        <field name="name">training.group.tree</field>
+        <field name="model">training.group</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_training_group_form" model="ir.ui.view">
+        <field name="name">training.group.form</field>
+        <field name="model">training.group</field>
+        <field name="arch" type="xml">
+            <form string="Grupo de formación">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_training_group" model="ir.actions.act_window">
+        <field name="name">Grupos de formación</field>
+        <field name="res_model">training.group</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

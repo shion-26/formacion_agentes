@@ -1,0 +1,972 @@
+/*==================================================
+    FONDO
+==================================================*/
+
+.fi_sheet{
+    background:#f5f7fa;
+    padding:30px;
+}
+
+/*==================================================
+    CABECERA
+==================================================*/
+
+.fi_header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#0b7b63;
+    color:#fff;
+    border-radius:14px;
+    padding:20px 30px;
+    margin-bottom:30px;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.fi_header_left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.fi_header_right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/*==================================================
+    LOGO DEL FORMULARIO
+==================================================*/
+
+.fi_logo{
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.15);
+    border-radius:12px;
+    flex-shrink:0;
+}
+
+.fi_logo_icon{
+    font-size:30px;
+    color:#ffffff;
+}
+
+/*==================================================
+    BOTÓN LIMPIAR
+==================================================*/
+
+.fi_btn_secondary{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    background:#ffffff;
+    color:#333;
+    border:1px solid #d6d6d6;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.fi_btn_secondary:hover{
+    background:#D3D3D3;
+}
+
+/*==================================================
+    BOTÓN GUARDAR
+==================================================*/
+
+.fi_btn_primary{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 20px;
+    background:#2fb35d;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.fi_btn_primary:hover{
+    background:#24974d;
+}
+
+/*==================================================
+    TARJETAS
+==================================================*/
+
+.fi_card{
+    background:#fff;
+    border:2px solid #444;
+    border-radius:14px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 4px 12px rgba(241, 9, 9, 0.08);
+}
+
+.fi_card_compact{
+    padding:18px 30px;
+}
+
+.fi_card_compact .fi_title{
+    font-size:18px;
+    margin-bottom:15px;
+    padding-bottom:8px;
+}
+
+.fi_card_compact .row>div{
+    margin-bottom:0;
+}
+
+/*==================================================
+    TITULOS
+==================================================*/
+
+.fi_title{
+    color:#0b7b63;
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:30px;
+    padding-bottom:10px;
+    border-bottom:2px solid #0b7b63;
+}
+
+/*==================================================
+    LABELS
+==================================================*/
+
+.fi_label{
+    display:block;
+    font-size:15px;
+    font-weight:600;
+    color:#222;
+    margin-bottom:8px;
+}
+
+/*==================================================
+    CAMPOS
+==================================================*/
+
+.fi_card .o_field_widget{
+    width:100%;
+}
+
+.fi_card .o_input,
+.fi_card input,
+.fi_card select,
+.fi_card textarea{
+    width:100%;
+    height:46px;
+    border:1.5px solid #555 !important;
+    border-radius:10px;
+    background:#fff;
+}
+
+.fi_card .o_input:focus,
+.fi_card input:focus,
+.fi_card select:focus,
+.fi_card textarea:focus{
+    border:2px solid #0b7b63 !important;
+    box-shadow:0 0 0 3px rgba(11,123,99,.15);
+    outline:none;
+}
+
+.fi_card .row>div{
+    margin-bottom:20px;
+}
+
+/*==================================================
+    CASILLA DE VERIFICACION (checkbox)
+==================================================*/
+
+.fi_checkbox_wrap{
+    display:flex;
+    align-items:center;
+    height:46px;
+}
+
+.fi_checkbox_wrap .form-check-input{
+    width:22px;
+    height:22px;
+    cursor:pointer;
+    accent-color:#0b7b63;
+}
+
+/*==================================================
+    CAMPO CON SUFIJO (ej. %) DENTRO DEL RECUADRO
+==================================================*/
+
+.fi_suffix_box{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:46px;
+    border:1.5px solid #555 !important;
+    border-radius:10px;
+    background:#fff;
+    padding:0 14px;
+}
+
+.fi_suffix_box:focus-within{
+    border:2px solid #0b7b63 !important;
+    box-shadow:0 0 0 3px rgba(11,123,99,.15);
+}
+
+.fi_suffix_box .o_field_widget{
+    flex:1 1 auto;
+    width:auto !important;
+}
+
+.fi_suffix_box .o_input,
+.fi_suffix_box input{
+    height:100% !important;
+    width:100% !important;
+    border:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    padding:0 !important;
+    background:transparent !important;
+}
+
+.fi_suffix_box span{
+    flex:0 0 auto;
+    color:#555;
+    font-weight:600;
+    margin-left:6px;
+}
+
+.fi_required{
+    color:#dc3545;
+    font-weight:700;
+    margin-left:3px;
+}
+
+/* Campos readonly */
+
+.fi_card .o_field_widget.o_readonly_modifier{
+    display:flex;
+    align-items:center;
+    width:100%;
+    min-height:46px;
+    padding:0 12px;
+
+    border:1.5px solid #555 !important;
+    border-radius:10px;
+    background:#f5f7fa;
+
+    color:#495057;
+    box-sizing:border-box;
+}
+
+/* Campos readonly con widget propio (ej. Nivel de calidad calculado):
+   se deja el widget con su diseño original, sin el recuadro genérico. */
+
+.fi_card .o_field_widget.o_readonly_modifier.qc_readonly_reset{
+    display:block;
+    width:auto;
+    min-height:0;
+    padding:0;
+
+    border:none !important;
+    border-radius:0;
+    background:transparent;
+
+    color:inherit;
+}
+
+/* Igual que qc_readonly_reset, para el widget char_counter_text */
+
+.fi_card .o_field_widget.o_readonly_modifier.cc_readonly_reset{
+    display:block;
+    width:100%;
+    min-height:0;
+    padding:0;
+
+    border:none !important;
+    border-radius:0;
+    background:transparent;
+
+    color:inherit;
+}
+
+.fi_card .o_field_widget.o_readonly_modifier.sel_readonly_reset{
+    display:block;
+    width:100%;
+    min-height:0;
+    padding:0;
+
+    border:none !important;
+    border-radius:0;
+    background:transparent;
+
+    color:inherit;
+}
+
+.fi_card .sel_readonly_reset select:disabled{
+    opacity:1;
+    background:#fff;
+    color:#495057;
+    -webkit-text-fill-color:#495057;
+    cursor:not-allowed;
+}
+
+/* Igual que qc_readonly_reset, para los campos de porcentaje (% dentro del recuadro) */
+
+.fi_card .o_field_widget.o_readonly_modifier.pct_readonly_reset{
+    display:block;
+    width:auto;
+    min-height:0;
+    padding:0;
+
+    border:none !important;
+    border-radius:0;
+    background:transparent;
+
+    color:inherit;
+}
+
+.fi_related_placeholder{
+    color:#9aa0a6;
+    font-style:italic;
+}
+
+.fi_card .row .row {
+    --bs-gutter-x: 40px;
+}
+
+.qc_buttons_group_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.qc_buttons_group_grid .qc_button {
+    width: 100%;
+    justify-content: center;
+}
+
+.qc_buttons_group_pair {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.qc_buttons_group_pair .qc_button {
+    flex: 1 1 0;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.fi_compact_group{
+    display:flex;
+    align-items:flex-start;
+    gap:36px;
+    flex-wrap:nowrap;
+}
+
+.fi_hallazgos_group{
+    gap:20px;
+}
+
+.fi_compact_item{
+    flex:0 0 auto;
+    min-width:0;
+}
+
+.fi_compact_group .o_form_label,
+.fi_compact_group .text-muted{
+    white-space:nowrap;
+}
+
+.fi_field_auto{
+    flex:0 0 auto;
+}
+
+.fi_field_auto .o_field_widget,
+.fi_field_auto .o_input,
+.fi_field_auto input,
+.fi_field_auto select{
+    width:auto;
+    min-width:auto;
+}
+
+.fi_field_compact{
+    flex:0 0 auto;
+}
+
+.fi_compact_field{
+    width:110px;
+}
+
+.fi_compact_field .o_field_widget,
+.fi_compact_field .o_input,
+.fi_compact_field input,
+.fi_compact_field select{
+    width:100%;
+    max-width:100%;
+    height:36px;
+    min-height:36px;
+    padding:4px 8px;
+    font-size:13px;
+}
+
+.fi_field_select{
+    flex:0 0 240px;
+    width:240px;
+}
+
+.fi_field_select .o_field_widget,
+.fi_field_select .o_input,
+.fi_field_select input,
+.fi_field_select select{
+    width:100%;
+    max-width:100%;
+}
+
+.fi_field_grow{
+    flex:1 1 auto;
+    min-width:200px;
+}
+
+.fi_compact_textarea{
+    width:100%;
+    max-width:100%;
+}
+
+.fi_compact_textarea .o_field_widget,
+.fi_compact_textarea textarea{
+    width:100%;
+    max-width:100%;
+    min-height:90px;
+    height:auto;
+    resize:vertical;
+    padding:6px 8px;
+    font-size:13px;
+}
+
+.fi_compact_textarea .cc_textarea{
+    padding:6px 8px 22px 8px;
+}
+
+.fi_fallas_group{
+    gap:24px;
+}
+
+/*==================================================
+    BOTONES DE SELECCIÓN
+==================================================*/
+
+.cf_buttons_group {
+    display: flex;
+    gap: 12px;
+}
+
+.cf_button {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.15s ease-in-out;
+}
+
+.cf_button .cf_icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+    color: #b0b0b0;
+}
+
+.cf_button .cf_label {
+    font-size: 13px;
+    color: #555;
+}
+
+.cf_button:hover {
+    border-color: #b0b0b0;
+}
+
+.cf_button.selected.cf-green {
+    border-color: #2e8b57;
+    background: #eaf7ef;
+}
+.cf_button.selected.cf-green .cf_icon,
+.cf_button.selected.cf-green .cf_label {
+    color: #2e8b57;
+}
+
+.cf_button.selected.cf-red {
+    border-color: #d9534f;
+    background: #fdeceb;
+}
+.cf_button.selected.cf-red .cf_icon,
+.cf_button.selected.cf-red .cf_label {
+    color: #d9534f;
+}
+
+.cf_button.selected.cf-orange {
+    border-color: #e69138;
+    background: #fdf3e7;
+}
+.cf_button.selected.cf-orange .cf_icon,
+.cf_button.selected.cf-orange .cf_label {
+    color: #e69138;
+}
+
+.cf_button.selected.cf-blue {
+    border-color: #4a90d9;
+    background: #eaf2fb;
+}
+.cf_button.selected.cf-blue .cf_icon,
+.cf_button.selected.cf-blue .cf_label {
+    color: #4a90d9;
+}
+
+/*==================================================
+OBSERVACIONES
+==================================================*/
+
+.fi_observaciones textarea{
+    min-height:170px;
+    resize:vertical;
+}
+
+/*==========================================================
+=            TARJETA RESUMEN
+==========================================================*/
+
+.fi_resumen {
+    height: fit-content;
+}
+
+.fi_resumen_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #ececec;
+}
+
+.fi_resumen_item:last-child {
+    border-bottom: none;
+}
+
+.fi_resumen_left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fi_icon {
+    color: #5b6b88;
+    width: 18px;
+    text-align: center;
+}
+
+.fi_resumen_label {
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.fi_resumen_right {
+    font-weight: 500;
+    color: #222;
+}
+
+.fi_resumen .o_field_widget {
+    margin: 0;
+}
+
+.fi_resumen .badge {
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.fi_resumen_valor {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    min-width: 180px;
+    text-align: right;
+}
+
+.fi_resumen .o_input {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: right;
+}
+
+.fi_resumen .o_input:focus {
+    box-shadow: none !important;
+}
+
+.fi_resumen .o_field_widget {
+    width: 180px;
+}
+
+/*==================================================
+    FOOTER INFORMATIVO
+==================================================*/
+
+.fi_footer_info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:25px;
+    padding:14px 18px;
+    border:1px solid #b7d3ff;
+    border-radius:10px;
+    background:#eef6ff;
+    color:#215a9b;
+    font-size:14px;
+}
+
+.fi_footer_info i{
+    font-size:18px;
+    color:#2d7ff9;
+    flex-shrink:0;
+}
+
+.fi_footer_info .fi_required{
+    color:#dc3545;
+    font-weight:700;
+}
+
+/* ============================
+   BOTONES HORIZONTALES (Nivel de calidad / Alerta crítica)
+   ============================ */
+.qc_buttons_group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.qc_buttons_group_inline {
+    max-width: 260px;
+}
+
+.qc_button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fff;
+    font-size: 13px;
+    color: #555;
+    transition: all 0.15s ease-in-out;
+}
+
+.qc_button:hover {
+    border-color: #b0b0b0;
+}
+
+.qc_icon {
+    font-size: 16px;
+    color: #b0b0b0;
+}
+
+.qc_button.selected.cf-green   { border-color: #2e8b57; background: #eaf7ef; color: #2e8b57; }
+.qc_button.selected.cf-green .qc_icon { color: #2e8b57; }
+
+.qc_button.selected.cf-lime    { border-color: #8bc34a; background: #f2f8e9; color: #6b9c33; }
+.qc_button.selected.cf-lime .qc_icon { color: #8bc34a; }
+
+.qc_button.selected.cf-orange  { border-color: #e69138; background: #fdf3e7; color: #e69138; }
+.qc_button.selected.cf-orange .qc_icon { color: #e69138; }
+
+.qc_button.selected.cf-blue    { border-color: #4a90d9; background: #eaf2fb; color: #4a90d9; }
+.qc_button.selected.cf-blue .qc_icon { color: #4a90d9; }
+
+.qc_button.selected.cf-red     { border-color: #d9534f; background: #fdeceb; color: #d9534f; }
+.qc_button.selected.cf-red .qc_icon { color: #d9534f; }
+
+.qc_button.selected.cf-gray    { border-color: #8a8f98; background: #f1f2f4; color: #6c7075; }
+.qc_button.selected.cf-gray .qc_icon { color: #8a8f98; }
+
+/* ============================
+   CSAT (1 a 5)
+   ============================ */
+.csat_buttons_group {
+    display: flex;
+    gap: 8px;
+}
+
+.csat_button {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+    background: #fff;
+    transition: all 0.15s ease-in-out;
+}
+
+.csat_button:hover {
+    border-color: #b0b0b0;
+}
+
+.csat_button.selected {
+    border-color: #2e8b57;
+    background: #eaf7ef;
+    color: #2e8b57;
+    font-weight: 600;
+}
+
+/* ============================
+   CAMPO DESHABILITADO VISUALMENTE (ej. TMO)
+   ============================ */
+.fi_field_disabled input,
+.fi_field_disabled textarea {
+    background: #f4f4f4 !important;
+    color: #999 !important;
+}
+
+.fi_help_text{
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 4px;
+}
+
+
+/* ============================== 
+    ETIQUETAS DE FORMULARIO
+   ============================== */
+.o_form_label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.text-muted {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #6c757d;
+    line-height: 1.3;
+}
+
+/*==================================================
+    TEXTAREA
+==================================================*/
+
+.fi_card textarea{
+    min-height:70px;
+    max-height:140px;
+    resize:vertical;
+    overflow:auto;
+}
+
+/* ============================
+   FILE DROPZONE
+   ============================ */
+.fd_dropzone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px dashed #b0b0b0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    background: #fafafa;
+    transition: all 0.15s ease-in-out;
+}
+
+.fd_dropzone:hover,
+.fd_dropzone.fd_dragover {
+    border-color: #0b7b63;
+    background: #eaf7ef;
+}
+
+.fd_icon {
+    font-size: 20px;
+    color: #999;
+}
+
+.fd_text {
+    font-size: 13px;
+    color: #666;
+}
+
+.fd_link {
+    color: #0b7b63;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.fd_file_selected {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid #0b7b63;
+    border-radius: 10px;
+    padding: 12px 16px;
+    background: #eaf7ef;
+}
+
+.fd_file_icon {
+    font-size: 18px;
+    color: #0b7b63;
+}
+
+.fd_file_name {
+    flex: 1;
+    font-size: 13px;
+    color: #333;
+    word-break: break-all;
+}
+
+.fd_remove {
+    cursor: pointer;
+    color: #d9534f;
+    font-size: 14px;
+}
+
+.fd_hidden_input {
+    display: none;
+}
+
+/* ============================
+   TRAINING TIME (widget de captura de horas 12h + AM/PM)
+   ============================ */
+.tt_field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tt_input_group {
+    display: flex;
+    align-items: stretch;
+    width: fit-content;
+    border: 1.5px solid #555;
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+    transition: all 0.15s ease-in-out;
+}
+
+.tt_input_group:focus-within {
+    border-color: #0b7b63;
+    box-shadow: 0 0 0 3px rgba(11, 123, 99, .15);
+}
+
+.tt_field .tt_input {
+    width: 90px !important;
+    height: 44px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    padding: 0 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.tt_field .tt_input:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none;
+}
+
+.tt_field_mmss .tt_input {
+    width: 150px !important;
+}
+
+.tt_field .tt_input.tt_input_error {
+    color: #d9534f;
+}
+
+.tt_meridiem_group {
+    display: flex;
+    border-left: 1.5px solid #555;
+}
+
+.tt_meridiem_btn {
+    border: none;
+    border-right: 1px solid #d6d6d6;
+    background: #f5f7fa;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.tt_meridiem_btn:last-child {
+    border-right: none;
+}
+
+.tt_meridiem_btn:hover {
+    background: #eaeef2;
+}
+
+.tt_meridiem_btn.selected {
+    background: #0b7b63;
+    color: #fff;
+}
+
+.tt_error {
+    font-size: 12px;
+    color: #d9534f;
+}
+
+/* ============================
+   CHAR COUNTER TEXT (textareas con contador de caracteres)
+   ============================ */
+.cc_text_field {
+    position: relative;
+    width: 100%;
+}
+
+.cc_textarea {
+    min-height: 70px;
+    max-height: 140px;
+    resize: vertical;
+    overflow: auto;
+    padding-bottom: 22px;
+}
+
+.cc_counter {
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+    font-size: 11px;
+    color: #6c757d;
+    background: transparent;
+    pointer-events: none;
+}
+
+.cc_counter_over {
+    color: #d9534f;
+    font-weight: 600;
+}

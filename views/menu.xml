@@ -1,0 +1,104 @@
+<odoo>
+
+    <menuitem
+        id="menu_formacion_root"
+        name="Formación y Calidad"
+        action="action_registro_fi"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_formacion_operacion"
+        name="Operación"
+        parent="menu_formacion_root"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_registro_fi"
+        name="Registro Formación"
+        parent="menu_formacion_operacion"
+        action="action_registro_fi"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_acompanamiento"
+        name="Acompañamiento"
+        parent="menu_formacion_operacion"
+        action="action_acompanamiento"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_plan_intervencion"
+        name="Planes de Intervención"
+        parent="menu_formacion_operacion"
+        action="action_plan_intervencion"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_control_asistencia"
+        name="Control de Asistencia"
+        parent="menu_formacion_operacion"
+        action="action_control_asistencia"
+        sequence="40"/>
+
+    <menuitem
+        id="menu_programacion_actividad"
+        name="Programación de Actividades"
+        parent="menu_formacion_operacion"
+        action="action_programacion_actividades"
+        sequence="50"/>
+
+    <menuitem
+        id="menu_actividad_ejecutada"
+        name="Actividades Ejecutadas"
+        parent="menu_formacion_operacion"
+        action="action_actividad_ejecutada"
+        sequence="60"/>
+
+    <menuitem
+        id="menu_formacion_parametros"
+        name="Parámetros"
+        parent="menu_formacion_root"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_training_campaign"
+        name="Campañas"
+        parent="menu_formacion_parametros"
+        action="action_training_campaign"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_training_group"
+        name="Grupos de Formación"
+        parent="menu_formacion_parametros"
+        action="action_training_group"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_training_trainer"
+        name="Formadores"
+        parent="menu_formacion_parametros"
+        action="action_training_trainer"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_training_entry_type"
+        name="Tipos de ingreso"
+        parent="menu_formacion_parametros"
+        action="action_training_entry_type"
+        sequence="40"/>
+
+    <menuitem
+        id="menu_training_channel"
+        name="Canales"
+        parent="menu_formacion_parametros"
+        action="action_training_channel"
+        sequence="50"/>
+
+    <menuitem
+        id="menu_training_role"
+        name="Cargos / Roles"
+        parent="menu_formacion_parametros"
+        action="action_training_role"
+        sequence="60"/>
+</odoo>
